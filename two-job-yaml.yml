@@ -22,4 +22,16 @@ jobs:
         checkStyleRunAnalysis: true
         pmdRunAnalysis: true
         findBugsRunAnalysis: true
-        
+  - job: thirdtestjob
+    pool: 'Default'
+    steps:
+    - task: Maven@2
+      inputs:
+        mavenPomFile: 'ci-test-app/pom.xml'
+        mavenOptions: '-Xmx3072m'
+        javaHomeOption: 'JDKVersion'
+        jdkVersionOption: '1.8'
+        jdkArchitectureOption: 'x64'
+        publishJUnitResults: false
+        testResultsFiles: '**/TEST-*.xml'
+        goals: 'package'
