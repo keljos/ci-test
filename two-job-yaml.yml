@@ -17,6 +17,7 @@ jobs:
     - task: Maven@2
       inputs:
         mavenPomFile: 'ci-test-app/pom.xml'
+        mavenOptions: '-Xmx3072m'
         jdkVersionOption: 1.8
         jdkArchitectureOption: x64
         checkStyleRunAnalysis: true
