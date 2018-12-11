@@ -6,11 +6,12 @@ jobs:
     - task: Maven@2
       inputs:
         mavenPomFile: 'ci-test-app/pom.xml'
+        goals: clean
         jdkVersionOption: 1.8
         jdkArchitectureOption: x64
-        checkStyleRunAnalysis: true
-        pmdRunAnalysis: true
-        findBugsRunAnalysis: true
+        checkStyleRunAnalysis: false
+        pmdRunAnalysis: false
+        findBugsRunAnalysis: false
   - job: secondtestjob
     pool: 'Default'
     steps:
