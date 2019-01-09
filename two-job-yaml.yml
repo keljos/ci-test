@@ -1,7 +1,7 @@
 
 jobs:
   - job: firsttestjob
-    pool: 'kejpool'
+    pool: 'Default'
     steps:
     - task: Maven@2
       inputs:
@@ -13,7 +13,7 @@ jobs:
         pmdRunAnalysis: false
         findBugsRunAnalysis: false
   - job: secondtestjob
-    pool: 'kejpool'
+    pool: 'Default'
     steps:
     - task: Maven@2
       inputs:
@@ -25,7 +25,7 @@ jobs:
         pmdRunAnalysis: true
         findBugsRunAnalysis: true
   - job: thirdtestjob
-    pool: 'kejpool'
+    pool: 'Default'
     steps:
     - task: Maven@2
       inputs:
