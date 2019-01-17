@@ -3,16 +3,40 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
-pool: 'Hosted'
-    
-steps:
-- task: Maven@2
-  inputs:
-    mavenPomFile: 'ci-test-app/pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: false
-    testResultsFiles: '**/TEST-*.xml'
-    goals: 'package'
+jobs:
+  - job: firsttestjob
+    pool: 'Hosted'
+    steps:
+    - task: Maven@2
+      inputs:
+        mavenPomFile: 'ci-test-app/pom.xml'
+        goals: clean
+        jdkVersionOption: 1.8
+        jdkArchitectureOption: x64
+        checkStyleRunAnalysis: false
+        pmdRunAnalysis: false
+        findBugsRunAnalysis: false
+  - job: secondtestjob
+    pool: 'Hosted'
+    steps:
+    - task: Maven@2
+      inputs:
+        mavenPomFile: 'ci-test-app/pom.xml'
+        mavenOptions: '-Xmx3072m'
+        jdkVersionOption: 1.8
+        jdkArchitectureOption: x64
+        checkStyleRunAnalysis: true
+        pmdRunAnalysis: true
+        findBugsRunAnalysis: true
+  - job: thirdtestjob
+    pool: 'Hosted'
+    steps:
+    - task: Maven@2
+      inputs:
+        mavenPomFile: 'ci-test-app/pom.xml'
+        javaHomeOption: 'JDKVersion'
+        jdkVersionOption: '1.8'
+        jdkArchitectureOption: 'x64'
+        publishJUnitResults: false
+        testResultsFiles: '**/TEST-*.xml'
+        goals: 'package'
