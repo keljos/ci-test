@@ -13,6 +13,7 @@ jobs:
         pmdRunAnalysis: false
         findBugsRunAnalysis: false
   - job: secondtestjob
+    displayName: displayforsecondtestjob
     pool: 'Default'
     steps:
     - task: Maven@2
