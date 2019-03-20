@@ -30,6 +30,7 @@ public class AppTest
 
     /**
      * Super Rigourous Test :-)
+     * ping
      */
     public void testApp()
     {
