@@ -1,0 +1,7 @@
+stages:
+- stage: stage1
+  jobs:
+  - job: job1
+    strategy:
+      matrix: 
+        parallel: 2
