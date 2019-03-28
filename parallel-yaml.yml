@@ -3,5 +3,4 @@ stages:
   jobs:
   - job: job11
     strategy:
-      matrix: 
-        parallel: 2
+      parallel: 2
