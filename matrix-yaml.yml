@@ -8,7 +8,7 @@ stages:
           coolVariable: 1
         config2:
           coolVariable: 2
-  - job: job1
+  - job: job2
     strategy:
       matrix: 
         config1:
