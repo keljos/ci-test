@@ -1,6 +1,9 @@
 stages:
 - stage: stage1
   jobs:
-  - job: job11
+  - job: job1
+    strategy:
+      parallel: 2
+  - job: job2
     strategy:
       parallel: 2
