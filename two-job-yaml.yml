@@ -1,4 +1,8 @@
-
+# specific branch build
+trigger:
+  branches:
+    exclude:
+    - master
 jobs:
   - job: firsttestjob
     pool: 'Default'
