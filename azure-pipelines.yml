@@ -4,6 +4,32 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
 pool: 'Default'
+
+strategy:
+
+  matrix:
+    Python27:
+      python.version: '2.7'
+    Python34:
+      python.version: '3.4'
+    Python35:
+      python.version: '3.5'
+    Python36:
+      python.version: '3.6'
+    Python37:
+      python.version: '3.7'
+    Docs:
+      python.version: '3.6'
+    TZ:
+      python.version: '3.6'
+    macOS:
+      python.version: '3.6'
+    Windows36:
+      python.version: '3.6'
+    PyPy:
+      python.version: 'pypy2'
+    PyPy3:
+      python.version: 'pypy3'
     
 steps:
 - task: Maven@2
@@ -16,3 +42,5 @@ steps:
     publishJUnitResults: false
     testResultsFiles: '**/TEST-*.xml'
     goals: 'package'
+- script: 'echo $(python.version)'
+  displayName: 'Command Line Script'
