@@ -7,7 +7,6 @@ pool: 'Default'
     
 steps:
 - task: Maven@2
-error
   inputs:
     mavenPomFile: 'ci-test-app/pom.xml'
     mavenOptions: '-Xmx3072m'
