@@ -1,25 +1,33 @@
+trigger:
+- master
 jobs:
-  - job: firsttestjob
-    pool: 'Default'
-    steps:
-    - task: Maven@2
-      inputs:
-        mavenPomFile: 'ci-test-app/pom.xml'
-        mavenOptions: '-Xmx3072m'
-        jdkVersionOption: 1.8
-        jdkArchitectureOption: x64
-        checkStyleRunAnalysis: true
-        pmdRunAnalysis: true
-        findBugsRunAnalysis: true
-    - task: CopyFiles@2
-      displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
-      inputs:
-        SourceFolder: '$(system.defaultworkingdirectory)'
-        Contents: '**/*.jar'
-        TargetFolder: '$(build.artifactstagingdirectory)'
-      condition: succeededOrFailed()
-    - task: PublishBuildArtifacts@1
-      displayName: 'Publish Artifact: drop'
-      inputs:
-        PathtoPublish: '$(build.artifactstagingdirectory)'
-      condition: succeededOrFailed()
+- job: publish
+  pool: 'default'
+  steps:
+  - script: |
+     cd $(Build.ArtifactStagingDirectory)
+     echo "hello world" > hi.txt
+     echo "bye" > bye.txt
+     mkdir usa
+     cd usa
+     mkdir nc
+     cd nc
+     mkdir durham
+     cd durham
+     echo "hello from Durham" > greeting.txt
+    displayName: Create some text files
+  - task: PublishPipelineArtifact@0
+    displayName: "Publish Artifact: drop"
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      ArtifactName: drop
+      publishLocation: Container
+- job: download
+  dependsOn: publish
+  condition: succeeded()
+  pool: 'default'
+  steps:
+  - task: DownloadPipelineArtifact@1
+    displayName: "Download Pipeline Artifacts"
+    inputs:
+      artifactName: drop
