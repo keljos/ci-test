@@ -5,12 +5,12 @@ jobs:
     - task: Maven@2
       inputs:
         mavenPomFile: 'ci-test-app/pom.xml'
-        goals: clean
+        mavenOptions: '-Xmx3072m'
         jdkVersionOption: 1.8
         jdkArchitectureOption: x64
-        checkStyleRunAnalysis: false
-        pmdRunAnalysis: false
-        findBugsRunAnalysis: false
+        checkStyleRunAnalysis: true
+        pmdRunAnalysis: true
+        findBugsRunAnalysis: true
     - task: CopyFiles@2
       displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
       inputs:
