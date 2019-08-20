@@ -1,0 +1,23 @@
+# Maven
+# Build your Java project and run tests with Apache Maven.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+pr:
+  branches:
+    include:
+    - test
+
+jobs:
+  - job: firsttestjob
+    displayName: displayforfirsttestjob
+    pool: 'Hosted'
+    steps:
+    - task: Maven@2
+      inputs:
+        mavenPomFile: 'ci-test-app/pom.xml'
+        goals: clean
+        jdkVersionOption: 1.8
+        jdkArchitectureOption: x64
+        checkStyleRunAnalysis: false
+        pmdRunAnalysis: false
+        findBugsRunAnalysis: false
