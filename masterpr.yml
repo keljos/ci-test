@@ -9,7 +9,7 @@ pr:
 jobs:
   - job: firsttestjob
     displayName: displayforfirsttestjob
-    pool: 'Hosted'
+    pool: 'Default'
     steps:
     - task: Maven@2
       inputs:
