@@ -11,4 +11,9 @@ jobs:
     displayName: displayforfirsttestjob
     pool: 'Hosted'
     steps:
+    - task: Gulp@1
+      inputs:
+        gulpFile: 'gulpfile.js'
+        targets: 'azp-report-eslint.js'
+        enableCodeCoverage: false
     - script: npx -c 'gulp azp-report-eslint.js'
