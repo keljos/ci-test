@@ -20,5 +20,8 @@ jobs:
         checkStyleRunAnalysis: false
         pmdRunAnalysis: false
         findBugsRunAnalysis: false
-    - script: echo "##vso[task.logissue type=error]Something went very wrong.";##vso[task.complete]current operation
-        displayName: 'Command Line Script'
+    - task: CmdLine@2
+      inputs:
+        script: |
+          echo "##vso[task.logissue type=error]Something went very wrong."
+          ##vso[task.complete]current operation
