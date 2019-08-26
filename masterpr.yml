@@ -25,3 +25,12 @@ jobs:
         script: |
           echo "##vso[task.logissue type=error]Something went very wrong."
           ##vso[task.complete]current operation
+  - job: secondtestjob
+    displayName: displayforsecondtestjob
+    pool: 'Default'
+    steps:
+    - task: CmdLine@2
+      inputs:
+        script: |
+          echo "##vso[task.logissue type=error]Something went very wrong."
+          ##vso[task.complete]current operation
