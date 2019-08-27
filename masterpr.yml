@@ -24,7 +24,7 @@ jobs:
       inputs:
         script: |
           echo "##vso[task.logissue type=error;sourcepath=masterpr.yml;linenumber=26;columnnumber=1;code=100;]Something went very wrong."
-          ##vso[task.complete]current operation
+          echo ##vso[task.complete result=Failed;]Found some linting issues
   - job: secondtestjob
     displayName: displayforsecondtestjob
     pool: 'Default'
@@ -32,5 +32,5 @@ jobs:
     - task: CmdLine@2
       inputs:
         script: |
-          echo "##vso[task.logissue type=error]Something went very wrong."
-          ##vso[task.complete]current operation
+          echo "##vso[task.logissue type=error;sourcepath=masterpr.yml;linenumber=26;columnnumber=1;code=100;]Something went very wrong."
+          echo ##vso[task.complete]current operation
