@@ -23,7 +23,7 @@ jobs:
     - task: CmdLine@2
       inputs:
         script: |
-          echo "##vso[task.logissue type=error]Something went very wrong."
+          echo "##vso[task.logissue type=error;sourcepath=masterpr.yml;linenumber=26;columnnumber=1;code=100;]Something went very wrong."
           ##vso[task.complete]current operation
   - job: secondtestjob
     displayName: displayforsecondtestjob
