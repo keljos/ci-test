@@ -6,10 +6,6 @@ pr:
   branches:
     include:
     - master
-  paths:
-    include:
-    - ci-test-app/docs
-
 jobs:
   - job: firsttestjob
     displayName: displayforfirsttestjob
