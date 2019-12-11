@@ -12,12 +12,12 @@ jobs:
     displayName: displayforfirsttestjob
     pool: 'Hosted'
     steps:
-    - task: Maven@2
-      inputs:
-        mavenPomFile: 'ci-test-app/pom.xml'
-        goals: clean
-        jdkVersionOption: 1.8
-        jdkArchitectureOption: x64
-        checkStyleRunAnalysis: false
-        pmdRunAnalysis: false
-        findBugsRunAnalysis: false
+- script: |
+    if [[ -z ${PR_NUMBER} ]]; then
+      NS="not a PR"
+    else
+      NS="github-pr-${PR_NUMBER}"
+    fi
+    echo "Namespace is ${NS}"
+  env:
+    PR_NUMBER: $(System.PullRequest.PullRequestNumber)
