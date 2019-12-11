@@ -9,12 +9,10 @@ jobs:
     pool: 'Default'
     steps:
     - script: |
-        PR_NUMBER="${System.PullRequest.PullRequestNumber}"
-    
-        if [[ -z $(PR_NUMBER) ]]; then
+        if [[ -z $PR_NUMBER ]]; then
           NS="not a PR"
         else
-          NS="github-pr-${PR_NUMBER}"
+          NS="github-pr-$PR_NUMBER"
         fi
     
         echo "Namespace is ${NS}"
