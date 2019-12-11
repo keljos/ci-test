@@ -6,8 +6,7 @@
 jobs:
   - job: firsttestjob
     displayName: displayforfirsttestjob
-  pool:
-    vmImage: ubuntu-16.04
+    pool: "Hosted Ubuntu 1604"
     steps:
     - script: |
         if [[ -z $PR_NUMBER ]]; then
