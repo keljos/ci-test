@@ -8,9 +8,6 @@ jobs:
     displayName: displayforfirsttestjob
     pool: 'Default'
     steps:
-    - script: echo Hello, world!
-      displayName: 'Run a one-line script'
-    
     - script: |
         PR_NUMBER="${System.PullRequest.PullRequestNumber}"
     
@@ -21,3 +18,4 @@ jobs:
         fi
     
         echo "Namespace is ${NS}"
+    
