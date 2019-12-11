@@ -1,14 +1,23 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
 jobs:
   - job: firsttestjob
     displayName: displayforfirsttestjob
     pool: 'Default'
     steps:
+    - script: echo Hello, world!
+      displayName: 'Run a one-line script'
+    
     - script: |
-        if [[ -z ${PR_NUMBER} ]]; then
+        PR_NUMBER="${System.PullRequest.PullRequestNumber}"
+    
+        if [[ -z $(PR_NUMBER) ]]; then
           NS="not a PR"
         else
           NS="github-pr-${PR_NUMBER}"
         fi
+    
         echo "Namespace is ${NS}"
-      env:
-        PR_NUMBER: $(System.PullRequest.PullRequestNumber)
