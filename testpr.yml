@@ -1,7 +1,7 @@
 jobs:
   - job: firsttestjob
     displayName: displayforfirsttestjob
-    pool: 'Hosted'
+    pool: 'Default'
     steps:
     - script: |
         if [[ -z ${PR_NUMBER} ]]; then
