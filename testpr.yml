@@ -3,12 +3,12 @@ jobs:
     displayName: displayforfirsttestjob
     pool: 'Hosted'
     steps:
-- script: |
-    if [[ -z ${PR_NUMBER} ]]; then
-      NS="not a PR"
-    else
-      NS="github-pr-${PR_NUMBER}"
-    fi
-    echo "Namespace is ${NS}"
-  env:
-    PR_NUMBER: $(System.PullRequest.PullRequestNumber)
+    - script: |
+        if [[ -z ${PR_NUMBER} ]]; then
+          NS="not a PR"
+        else
+          NS="github-pr-${PR_NUMBER}"
+        fi
+        echo "Namespace is ${NS}"
+      env:
+        PR_NUMBER: $(System.PullRequest.PullRequestNumber)
