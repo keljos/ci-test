@@ -12,9 +12,7 @@ jobs:
       displayName: 'Run a one-line script'
     
     - script: |
-        PR_NUMBER="${System.PullRequest.PullRequestNumber}"
-    
-        if [[ -z $(PR_NUMBER) ]]; then
+        if [[ -z ${PR_NUMBER} ]]; then
           NS="not a PR"
         else
           NS="github-pr-${PR_NUMBER}"
