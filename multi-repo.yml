@@ -5,7 +5,7 @@
 
 resources:
   repositories:
-  - repository: keljos/privatemultirepo
+  - repository: "keljos/privatemultirepo"
     type: github
     endpoint: "kelliejos"
     name: keljos/privatemultirepo
