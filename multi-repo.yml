@@ -18,5 +18,6 @@ pool:
   
 steps:
 - checkout: self
+- checkout: keljos/privatemultirepo
 
 - script: dir $(Build.SourcesDirectory)
